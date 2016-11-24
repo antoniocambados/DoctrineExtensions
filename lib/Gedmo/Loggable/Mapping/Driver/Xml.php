@@ -63,6 +63,12 @@ class Xml extends BaseXml
         if (isset($xmlDoctrine->{'embedded'})) {
             $this->inspectElementForVersioned($xmlDoctrine->{'embedded'}, $config, $meta);
         }
+        
+        if ($xmlDoctrine->{'attribute-overrides'}->count() > 0) {
+            if ($xmlDoctrine->{'attribute-overrides'}->count() > 0) {
+                $this->inspectElementForVersioned($xmlDoctrine->{'attribute-overrides'}->{'attribute-override'}, $config, $meta);
+            }
+        }
 
         if (!$meta->isMappedSuperclass && $config) {
             if (is_array($meta->identifier) && count($meta->identifier) > 1) {
